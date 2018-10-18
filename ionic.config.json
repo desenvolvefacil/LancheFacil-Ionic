@@ -1,0 +1,7 @@
+{
+  "name": "LancheFacil",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

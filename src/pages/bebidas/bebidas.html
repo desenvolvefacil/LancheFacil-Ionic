@@ -1,0 +1,42 @@
+<!--
+  Generated template for the BebidasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Bebidas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let it of bebidas; let i = index">
+
+      <ion-grid>
+          <ion-row>
+            <ion-col col-9>
+                <img [src]="it.foto" [alt]="it.nome"/>
+            </ion-col>
+            <ion-col col-3>
+                R$ {{it.valor | number:'1.2-2'}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col style="white-space:normal" col-9>
+              <b>{{it.nome}}:</b> {{it.descricao}}
+            </ion-col>
+            <ion-col col-3>
+                <button ion-button color="secondary" (click)="Pedir(i);"><ion-icon name="cart"> Pedir</ion-icon></button>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+
+      
+    </ion-item>
+  </ion-list>
+</ion-content>

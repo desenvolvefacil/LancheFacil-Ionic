@@ -1,0 +1,121 @@
+<!--
+  Generated template for the CarrinhoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar hideBackButton >
+    <ion-title>Meu Carrinho</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <b>Produto</b>
+      </ion-col>
+      <ion-col>
+          <b>Valor</b>
+      </ion-col>
+      <ion-col>
+          <b>Qtd</b>
+      </ion-col>
+      <ion-col>
+
+      </ion-col>
+      <ion-col>
+          <b>Total</b>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list>
+    <ion-item *ngFor="let it of itens; let i = index">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+              <ion-row>
+                  <img [src]="it.produto.foto" [alt]="it.produto.nome"/>
+              </ion-row>
+              <ion-row>
+                {{it.produto.nome}}
+              </ion-row>
+          </ion-col>
+
+          
+
+          <ion-col>
+              R$ {{it.produto.valor | number:'1.2-2'}}
+          </ion-col>
+
+          <ion-col>
+              <ion-row>
+                  {{it.qtd}}x
+              </ion-row>
+          </ion-col>
+
+          <ion-col>
+              <ion-row>
+                  <button ion-button icon-only clear  mdeium (click)="addQtd(i);">
+                    <ion-icon name="add-circle"></ion-icon>
+                  </button>
+              </ion-row>
+              <ion-row>
+                  <button ion-button icon-only clear  mdeium (click)="remQtd(i);">
+                      <ion-icon name="remove-circle"></ion-icon>
+                    </button>
+              </ion-row>
+          </ion-col>
+
+          <ion-col>
+            R$ {{it.valorTotal | number:'1.2-2'}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid>
+      <ion-row>
+        <ion-col col-7>
+          
+        </ion-col>
+        
+        <ion-col>
+          Total Pedido
+        </ion-col>
+        <ion-col>
+            R$ {{ValorTotalPedido | number:'1.2-2'}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-7>
+
+        </ion-col>
+        <ion-col>
+            <ion-label><b>Nª Mesa:</b></ion-label>
+        </ion-col>
+        
+
+        <ion-col>
+            <ion-input name="numeroMesa" id="numeroMesa" type="number" min="0" max="100" [(ngModel)]="NumeroMesa"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-8>
+          
+        </ion-col>
+        
+        <ion-col>
+           <button disabled ion-button id="btFechaPedido" (click)="FinalizaPedido();">Fechar Pedido</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+</ion-content>

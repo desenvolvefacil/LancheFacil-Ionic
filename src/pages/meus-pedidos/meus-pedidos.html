@@ -1,0 +1,76 @@
+<!--
+  Generated template for the MeusPedidosPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Meus Pedidos</ion-title>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button (click)="Sair();" *ngIf="NomeUsuario!=''" [color]="'danger'">Sair</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col12>
+          <p *ngIf="NomeUsuario!=''">Bem Vindo! {{NomeUsuario}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-list>
+      <ion-item *ngFor="let ped of pedidos; let i = index">
+
+        <ion-row (click)="Detalhar(i);">
+          <ion-col>
+              <ion-row>
+                  <ion-col col3>
+                      {{ped.data}}
+                  </ion-col>
+                <ion-col col3>
+                  <b>Pedido: </b>{{ped.id}}
+                </ion-col>
+
+                <ion-col col3>
+                  <b>Total: </b>R$ {{ped.valorTotal |number:'1.2-2'}}
+                </ion-col>
+
+              </ion-row>
+              <ion-row>
+                <ion-col col3>
+                    {{ped.hora}}
+                  </ion-col>
+                <ion-col col3>
+                    <b>Mesa: </b>{{ped.numeroMesa}}
+                </ion-col>
+
+                <ion-col col3 [ngStyle]="{'color': ped.corStatus}">
+                  {{ped.nomeStatus}}
+                </ion-col>
+              </ion-row>
+
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  
+    <ion-row>
+        <ion-col col-9>
+          
+        </ion-col>
+        <ion-col>
+          
+        </ion-col>
+      </ion-row>
+  
+  </ion-grid>
+</ion-content>
